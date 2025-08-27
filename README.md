@@ -37,56 +37,51 @@ git clone [https://github.com/your-username/your-repo-name.git](https://github.c
 cd your-repo-name
 ```
 
-2. Create a Virtual Environment
-# For macOS/Linux
+### 2. Create a Virtual Environment
+### For macOS/Linux
 python3 -m venv venv
 source venv/bin/activate
 
-# For Windows
+### For Windows
 python -m venv venv
 .\venv\Scripts\activate
 
-3. Install Dependencies
+### 3. Install Dependencies
 Install all the required Python packages from the requirements.txt file.
 
 pip install -r requirements.txt
 
-4. Configure Environment Variables
+### 4. Configure Environment Variables
 You'll need to provide API keys for Groq and GitHub.
 
 Create a file named .env in the root of your project directory.
 
 Add the following content to the file, replacing the placeholder values with your actual credentials:
 
-# .env file
+#### .env file
 
-###Get your Groq API Key from https://console.groq.com/keys
+### Get your Groq API Key from https://console.groq.com/keys
 GROQ_API_KEY="gsk_YourGroqApiKey"
 
 ### Generate a GitHub Personal Access Token with 'repo' scope
-# https://github.com/settings/tokens
+https://github.com/settings/tokens
 GITHUB_TOKEN="ghp_YourGitHubPersonalAccessToken"
 
-# The full name of your target repository (e.g., "codeforpakistan/tarbiyat")
+### The full name of your target repository (e.g., "codeforpakistan/tarbiyat")
 GITHUB_REPO="your-username/your-repo-name"
 
 
 
-##📝 Customization
-#Changing the LLM
+## 📝 Customization
+### Changing the LLM
 You can easily switch to a different model supported by Groq by changing the model_name in the script:
 
-# In the generate_issues_from_text function
+### In the generate_issues_from_text function
 llm = ChatGroq(temperature=0, model_name="mixtral-8x7b-32768", api_key=GROQ_API_KEY)
 
-#Adjusting Issue Labels
-To add, remove, or change the available labels, modify the Literal type hint in the GitHubIssue Pydantic model:
-class GitHubIssue(BaseModel):
-    # ...
-    labels: List[Literal["bug", "feature-request", "refactor", "testing"]]
+### Adjusting Issue Labels
+To add, remove, or change the available labels, modify the Literal type hint in the GitHubIssue Pydantic model
 
 
 
-
-    # ...
-    labels: List[Literal["bug", "feature-request", "refactor", "testing"]]
+The issues in the repo have also been created by this for the problem statement in code.
