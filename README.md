@@ -60,10 +60,10 @@ Add the following content to the file, replacing the placeholder values with you
 
 # .env file
 
-# Get your Groq API Key from https://console.groq.com/keys
+###Get your Groq API Key from https://console.groq.com/keys
 GROQ_API_KEY="gsk_YourGroqApiKey"
 
-# Generate a GitHub Personal Access Token with 'repo' scope
+### Generate a GitHub Personal Access Token with 'repo' scope
 # https://github.com/settings/tokens
 GITHUB_TOKEN="ghp_YourGitHubPersonalAccessToken"
 
@@ -72,17 +72,21 @@ GITHUB_REPO="your-username/your-repo-name"
 
 
 
-📝 Customization
-Changing the LLM
+##📝 Customization
+#Changing the LLM
 You can easily switch to a different model supported by Groq by changing the model_name in the script:
 
 # In the generate_issues_from_text function
 llm = ChatGroq(temperature=0, model_name="mixtral-8x7b-32768", api_key=GROQ_API_KEY)
 
-Adjusting Issue Labels
+#Adjusting Issue Labels
 To add, remove, or change the available labels, modify the Literal type hint in the GitHubIssue Pydantic model:
-
-# In the GitHubIssue class definition
 class GitHubIssue(BaseModel):
+    # ...
+    labels: List[Literal["bug", "feature-request", "refactor", "testing"]]
+
+
+
+
     # ...
     labels: List[Literal["bug", "feature-request", "refactor", "testing"]]
